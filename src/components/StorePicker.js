@@ -1,26 +1,15 @@
+/* eslint react/prop-types: 0 */
+
 import React from 'react'
 import { getFunName } from '../helpers'
 
 class StorePicker extends React.Component {
-  // constructor () {
-  //   super()
-
-  //   this.goToStore = this.goToStore.bind(this)
-  // }
-
-  // goToStore (event) {
-  //   // 1. Stop the form frmo submitting
-  //   event.preventDefault()
-  //   // 2. Get the text from that input
-  //   console.log(this)
-  //   // 3. Change the page to /store/whatever-they-entered
-  // }
+  myInput = React.createRef()
 
   goToStore = event => {
-    // 1. Stop the form frmo submitting
     event.preventDefault()
-    // 2. Get the text from that input
-    // 3. Change the page to /store/whatever-they-entered
+    const input = this.myInput.value.value
+    this.props.history.push(`/store/${input}`)
   }
 
   render () {
@@ -29,7 +18,7 @@ class StorePicker extends React.Component {
         <h2>Please Enter A Store</h2>
         <input
           type='text'
-          // ref={}
+          ref={this.myInput}
           required
           placeholder='Store Name'
           defaultValue={getFunName()}
