@@ -1,12 +1,10 @@
-/* eslint react/prop-types: 0 */
-
 import React from 'react'
 import { getFunName } from '../helpers'
 
 class StorePicker extends React.Component {
   myInput = React.createRef()
 
-  goToStore = event => {
+  goToStore = (event) => {
     event.preventDefault()
     const input = this.myInput.value.value
     this.props.history.push(`/store/${input}`)
