@@ -2,6 +2,9 @@ module.exports = {
   "plugins": [
     "react"
   ],
+  "rules" : {
+    "react/prop-types": 0
+  },
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -16,5 +19,5 @@ module.exports = {
     "mocha":   true
   },
   "parser": "babel-eslint",
-  "extends": ["standard", "standard-react", "eslint:recommended", "plugin:react/recommended"],
+  "extends": ["standard", "standard-react", "eslint:recommended", "plugin:react/recommended"]
 }
