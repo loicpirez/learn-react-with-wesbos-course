@@ -34,9 +34,9 @@ class App extends React.Component {
     )
   }
 
-  addFish = (fish) => {
+  addFish = fish => {
     // 1. Take a copy of the existing state
-    const fishes = {...this.state.fishes}
+    const fishes = { ...this.state.fishes }
     // 2. Add our new fish to that fishes variable
     fishes[`fish${Date.now()}`] = fish
     // 3. Set the new fishes object to state
@@ -44,9 +44,18 @@ class App extends React.Component {
   }
 
   updateFish = (key, updatedFish) => {
-    const fishes = {...this.state.fishes}
+    const fishes = { ...this.state.fishes }
     fishes[key] = updatedFish
-    this.setState ({ fishes })
+    this.setState({ fishes })
+  }
+
+  deleteFish = key => {
+    // 1. take a copy of state
+    const fishes = { ...this.state.fishes }
+    // 2. update the test
+    fishes[key] = null
+    // 3. update the state
+    this.setState({ fishes })
   }
 
   loadSampleFishes = () => {
@@ -55,7 +64,7 @@ class App extends React.Component {
     })
   }
 
-  addToOrder = (key) => {
+  addToOrder = key => {
     // 1 Take a copy of state
     const order = { ...this.state.order }
     // 2 Either add to the order or update the number in our order
@@ -63,21 +72,27 @@ class App extends React.Component {
     this.setState({ order })
   }
 
-  render () {
+  render() {
     return (
       <div className='catch-of-the-day'>
         <div className='menu'>
           <Header tagline='Fresh seafood market' />
-          <ul className="fishes">
-            {
-              Object.keys(this.state.fishes).map(key => <Fish addToOrder={this.addToOrder} index={key} key={key} details={this.state.fishes[key]} />)
-            }
+          <ul className='fishes'>
+            {Object.keys(this.state.fishes).map(key => (
+              <Fish
+                addToOrder={this.addToOrder}
+                index={key}
+                key={key}
+                details={this.state.fishes[key]}
+              />
+            ))}
           </ul>
         </div>
         <Order fishes={this.state.fishes} order={this.state.order} />
         <Inventory
           addFish={this.addFish}
           updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
           loadSampleFishes={this.loadSampleFishes}
           fishes={this.state.fishes}
         />
