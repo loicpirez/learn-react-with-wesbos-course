@@ -2,9 +2,6 @@ module.exports = {
   "plugins": [
     "react"
   ],
-  "rules" : {
-    "react/prop-types": 0
-  },
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
