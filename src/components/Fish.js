@@ -12,6 +12,7 @@ class Fish extends React.Component {
       status: PropTypes.string.isRequired
     }),
     addToOrder: PropTypes.func.isRequired,
+    index: PropTypes.string
   }
 
   render() {
